@@ -1,14 +1,15 @@
 import { Descriptions } from "antd";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { url } from "./constant";
+
 export const ViewUser = () => {
   const search = useLocation().search;
   const id = new URLSearchParams(search).get("_id");
-  //   const { id } = useParams();
   const [user, setUser] = useState();
 
   const fetchUser = async (id) => {
-    const data = await fetch(`http://localhost:8000/view?_id=${id}`);
+    const data = await fetch(`http://${url}/view?_id=${id}`);
     const json = await data.json();
     setUser(json.user);
   };

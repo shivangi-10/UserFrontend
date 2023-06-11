@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { UserForm } from "./UserForm";
+import { url } from "./constant";
 
 export const EditForm = () => {
   const search = useLocation().search;
@@ -8,7 +9,7 @@ export const EditForm = () => {
   const [user, setUser] = useState();
 
   const fetchUser = async (id) => {
-    const data = await fetch(`http://localhost:8000/view?_id=${id}`);
+    const data = await fetch(`http://${url}/view?_id=${id}`);
     const json = await data.json();
     json.user.gender = `${json.user.gender}`;
     json.user.status = `${json.user.status}`;
@@ -25,7 +26,7 @@ export const EditForm = () => {
       <h2>Register your details</h2>
       <div className="form">
         {user ? (
-          <UserForm user={user} url={`http://localhost:8000/form?_id=${id}`} />
+          <UserForm user={user} url={`http://${url}/form?_id=${id}`} />
         ) : (
           <div>Fetching user</div>
         )}

@@ -2,6 +2,7 @@ import { Space, Table, Tag, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { Button } from "antd";
+import { url } from "./constant";
 
 export const TableView = () => {
   const [data, setData] = useState([]);
@@ -79,7 +80,7 @@ export const TableView = () => {
   ];
 
   const apiCall = () => {
-    fetch("http://localhost:8000")
+    fetch(`http://${url}`)
       .then((res) => res.json())
       .then((res) => {
         const users = res.users.map((ele, key) => {
@@ -90,7 +91,7 @@ export const TableView = () => {
       });
   };
   const handleDelete = (id) => {
-    fetch(`http://localhost:8000/delete`, {
+    fetch(`http://${url}/delete`, {
       method: "delete",
       body: JSON.stringify({ id: id }),
       headers: {
@@ -100,7 +101,7 @@ export const TableView = () => {
   };
 
   const handleSearch = () => {
-    fetch(`http://localhost:8000?search=${search}`)
+    fetch(`http://${url}?search=${search}`)
       .then((res) => res.json())
       .then((res) => {
         const users = res.users.map((ele, key) => {
@@ -128,7 +129,7 @@ export const TableView = () => {
             <a href="/form">Add User</a>
           </Button>
           <Button type="primary" danger>
-            <a href={`http://localhost:8000/export?search=${search}`} download>
+            <a href={`http://${url}/export?search=${search}`} download>
               Export csv
             </a>
           </Button>

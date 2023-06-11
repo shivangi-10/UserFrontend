@@ -81,11 +81,6 @@ export const UserForm = (props) => {
             message: "Please input user's mobile!",
           },
         ]}
-        //   valuePropName="checked"
-        //   wrapperCol={{
-        //     offset: 8,
-        //     span: 16,
-        //   }}
       >
         <Input />
       </Form.Item>
