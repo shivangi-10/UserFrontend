@@ -1,4 +1,4 @@
-import { Descriptions } from "antd";
+import { Descriptions, Image } from "antd";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { url } from "./constant";
@@ -48,7 +48,7 @@ export const ViewUser = () => {
           </Descriptions.Item>
           <Descriptions.Item label="Status">{user.status}</Descriptions.Item>
           <Descriptions.Item label="Profile">
-            {user.firstname}
+            <Image width={200} src={user.profile} />
           </Descriptions.Item>
         </Descriptions>
       ) : (

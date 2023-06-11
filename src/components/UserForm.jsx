@@ -1,22 +1,24 @@
-import { Button, Form, Input, Radio, Select } from "antd";
+import { Button, Form, Input, Radio, Select, Image } from "antd";
 import { useNavigate } from "react-router-dom";
 
 export const UserForm = (props) => {
   let navigate = useNavigate();
 
   const onFinish = async (values) => {
+    let formData = new FormData();
+    for (var key in values) {
+      formData.append(key, values[key]);
+    }
+    let fileInp = document.querySelector("input[type=file]");
+    formData.append("profileImg", fileInp.files[0]);
     await fetch(props.url, {
       method: "post",
-      body: values,
-      headers: {
-        "Content-Type": "multipath/form-data",
-      },
+      body: formData,
     }).then((json) => {});
     let path = `/`;
     navigate(path);
   };
   const onFinishFailed = (errorInfo) => {};
-
   return (
     <Form
       name="basic"
@@ -131,12 +133,18 @@ export const UserForm = (props) => {
         name="profileImage"
         rules={[
           {
-            required: true,
             message: "Please upload profile image!",
           },
         ]}
       >
         <input type="file" name="profileImage" />
+        {props.user.profile ? (
+          <>
+            Current Image: <Image width={100} src={props.user.profile} />
+          </>
+        ) : (
+          <></>
+        )}
       </Form.Item>
       <Form.Item
         wrapperCol={{
