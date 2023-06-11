@@ -23,7 +23,7 @@ export const ViewUser = () => {
     <div>
       {user ? (
         <Descriptions
-          title="Responsive Descriptions"
+          title="User Details"
           bordered
           column={{
             xxl: 4,

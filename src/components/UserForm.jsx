@@ -7,9 +7,9 @@ export const UserForm = (props) => {
   const onFinish = async (values) => {
     await fetch(props.url, {
       method: "post",
-      body: JSON.stringify(values),
+      body: values,
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "multipath/form-data",
       },
     }).then((json) => {});
     let path = `/`;
@@ -126,7 +126,18 @@ export const UserForm = (props) => {
           <Select.Option value="Active">Active</Select.Option>
         </Select>
       </Form.Item>
-
+      <Form.Item
+        label="File upload"
+        name="profileImage"
+        rules={[
+          {
+            required: true,
+            message: "Please upload profile image!",
+          },
+        ]}
+      >
+        <input type="file" name="profileImage" />
+      </Form.Item>
       <Form.Item
         wrapperCol={{
           offset: 8,
