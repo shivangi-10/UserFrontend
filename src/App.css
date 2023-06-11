@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+}
+
+.form {
+  margin: 3% auto;
+  height: fit-content;
+  width: fit-content;
+  border: solid grey;
+  border-radius: 5px;
+  padding: 4%;
+  box-shadow: 2px 2px gray;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.header {
+  margin: 20px;
+  display: flex;
+  /* height: 100px; */
+  /* width: 100px; */
+  flex-wrap: unset;
+  flex-wrap: wrap;
+  align-content: space-between;
+  /* flex-direction: row; */
+  justify-content: space-between;
+}
+
+.search {
+  width: 25%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.add {
+  width: 18%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.table {
+  margin: 20px;
+}
